@@ -1,0 +1,32 @@
+24.
+select irstream spolka as X, kursOtwarcia as Y " +
+from KursAkcji.win:length(3)
+where spolka='Oracle'
+
+25.
+select irstream data, kursOtwarcia, spolka
+from KursAkcji.win:length(3)
+where spolka='Oracle'
+
+26.
+select irstream data, kursOtwarcia, spolka
+from KursAkcji(spolka='Oracle').win:length(3)
+
+27.
+select istream data, kursOtwarcia, spolka
+from KursAkcji(spolka='Oracle').win:length(3)
+
+28.
+select istream data, max(kursOtwarcia), spolka
+from KursAkcji(spolka='Oracle').win:length(5)
+
+29.
+select istream data, spolka, kursOtwarcia-max(kursOtwarcia) as roznica
+from KursAkcji(spolka='Oracle').win:length(5)
+
+max() znajduje maksymalną wartość z zakresu okna
+
+30.
+select istream data, spolka, kursOtwarcia-min(kursOtwarcia) as roznica
+from KursAkcji(spolka='Oracle').win:length(2)
+having kursOtwarcia-min(kursOtwarcia) > 0
